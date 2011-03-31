@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+   <parent>
+      <groupId>org.jboss.spring.examples.primrose</groupId>
+      <artifactId>primrose-bom</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <relativePath>../bom/pom.xml</relativePath>
+   </parent>
+
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.jboss.spring.examples.primrose</groupId>
+   <artifactId>primrose-database</artifactId>
+   <packaging>pom</packaging>
+   <name>JBoss Snowdrop examples - Primrose database utility</name>
+
+   <properties>
+      <jboss.home>/home/kpiwko/apps/jboss-5.1.0.GA</jboss.home>
+      <jboss.domain>default</jboss.domain>
+   </properties>
+
+   <dependencies>
+      <dependency>
+         <groupId>hsqldb</groupId>
+         <artifactId>hsqldb</artifactId>
+         <version>1.8.0.10</version>
+      </dependency>
+   </dependencies>
+
+   <profiles>
+      <profile>
+         <id>copy-jboss-ds</id>
+
+         <build>
+            <defaultGoal>process-resources</defaultGoal>
+            <plugins>
+               <!--  copy data source -->
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-resources-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <id>copy-ds-context</id>
+                        <goals>
+                           <goal>copy-resources</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                           <outputDirectory>${jboss.home}/server/${jboss.domain}/deploy</outputDirectory>
+                           <resources>
+                              <resource>
+                                 <directory>${basedir}</directory>
+                                 <filtering>true</filtering>
+                                 <includes>
+                                    <include>jboss-primrose-ds.xml</include>
+                                 </includes>
+                              </resource>
+                           </resources>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+
+      <profile>
+         <id>copy-jboss-jms</id>
+         <build>
+            <defaultGoal>process-resources</defaultGoal>
+            <plugins>
+               <!--  copy data source -->
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-resources-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <id>copy-jms-destination</id>
+                        <goals>
+                           <goal>copy-resources</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                           <outputDirectory>${jboss.home}/server/${jboss.domain}/deploy/messaging</outputDirectory>
+                           <resources>
+                              <resource>
+                                 <directory>${basedir}</directory>
+                                 <filtering>true</filtering>
+                                 <includes>
+                                    <include>primrose-destinations-service.xml</include>
+                                 </includes>
+                              </resource>
+                           </resources>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+
+      <profile>
+         <id>setup-db</id>
+
+         <build>
+            <defaultGoal>package</defaultGoal>
+            <plugins>
+               <plugin>
+                  <groupId>org.codehaus.mojo</groupId>
+                  <artifactId>exec-maven-plugin</artifactId>
+                  <version>1.1.1</version>
+                  <executions>
+                     <execution>
+                        <id>setup</id>
+                        <phase>package</phase>
+                        <goals>
+                           <goal>java</goal>
+                        </goals>
+                        <configuration>
+                           <mainClass>org.hsqldb.util.SqlTool</mainClass>
+                           <arguments>
+                              <argument>--inlineRc</argument>
+                              <argument>URL=jdbc:hsqldb:file:./data/primrosedb,USER=sa,PASSWORD=</argument>
+                              <argument>db-setup.sql</argument>
+                           </arguments>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+
+      <profile>
+         <id>start-db</id>
+         <build>
+            <defaultGoal>package</defaultGoal>
+            <plugins>
+               <plugin>
+                  <groupId>org.codehaus.mojo</groupId>
+                  <artifactId>exec-maven-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <id>setup</id>
+                        <phase>package</phase>
+                        <goals>
+                           <goal>java</goal>
+                        </goals>
+                        <configuration>
+                           <mainClass>org.hsqldb.Server</mainClass>
+                           <arguments>
+                              <argument>-database.0</argument>
+                              <argument>file:data/primrosedb</argument>
+                              <argument>-dbname.0</argument>
+                              <argument>primrosedb</argument>
+                           </arguments>
+                        </configuration>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+
+   </profiles>
+
+
+</project>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+   <display-name>Snowdrop Spring Example Primrose</display-name>
+   <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring-*-context.xml</param-value>
+   </context-param>
+
+   <context-param>
+      <param-name>contextClass</param-name>
+      <param-value>org.jboss.spring.vfs.context.VFSXmlWebApplicationContext</param-value>
+   </context-param>
+
+   <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener>
+
+   <servlet>
+      <servlet-name>spring-mvc-servlet</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+         <param-name>contextClass</param-name>
+         <param-value>org.jboss.spring.vfs.context.VFSXmlWebApplicationContext</param-value>
+      </init-param>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>/WEB-INF/springmvc-servlet-context.xml</param-value>
+      </init-param>
+   </servlet>
+
+   <servlet>
+      <servlet-name>WateringService</servlet-name>
+      <servlet-class>org.jboss.spring.examples.primrose.ws.WateringService</servlet-class>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>spring-mvc-servlet</servlet-name>
+      <url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>WateringService</servlet-name>
+      <url-pattern>/ws/water</url-pattern>
+   </servlet-mapping>
+
+</web-app>
+

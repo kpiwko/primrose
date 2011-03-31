@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+   xmlns:jms="http://www.springframework.org/schema/jms" xmlns:jboss="http://www.jboss.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+       http://www.jboss.org/schema/spring http://www.jboss.org/schema/spring.xsd">
+
+   <context:component-scan base-package="org.jboss.spring.examples.primrose.messaging" />
+
+   <jms:jca-listener-container resource-adapter="resourceAdapter" acknowledge="auto" activation-spec-factory="activationSpecFactory">
+      <jms:listener destination="/queue/primrose" ref="wateringNotificationProcessor" method="processWateringNotification" />
+   </jms:jca-listener-container>
+
+   <jboss:activation-spec-factory id="activationSpecFactory" />
+
+   <jboss:resource-adapter id="resourceAdapter" />
+
+   <jee:jndi-lookup id="jcaConnectionFactory" jndi-name="java:/JmsXA" expected-type="javax.jms.ConnectionFactory" />
+
+   <bean class="org.springframework.jms.core.JmsTemplate">
+      <property name="connectionFactory" ref="jcaConnectionFactory" />
+      <property name="defaultDestinationName" value="queue/primrose" />
+      <property name="destinationResolver">
+         <bean class="org.springframework.jms.support.destination.JndiDestinationResolver" />
+      </property>
+   </bean>
+
+</beans>

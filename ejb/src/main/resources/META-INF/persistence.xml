@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+   <persistence-unit name="primrosePU" transaction-type="JTA">
+      <jta-data-source>java:/PrimroseDS</jta-data-source>
+      <properties>
+         <property name="jboss.entity.manager.jndi.name" value="java:/primrose/em" />
+         <property name="jboss.entity.manager.factory.jndi.name" value="java:/primrose/emf" />
+         <property name="hibernate.show_sql" value="true" />
+      </properties>
+   </persistence-unit>
+</persistence>

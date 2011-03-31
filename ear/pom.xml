@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent>
+      <groupId>org.jboss.spring.examples.primrose</groupId>
+      <artifactId>primrose-bom</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <relativePath>../bom/pom.xml</relativePath>
+   </parent>
+
+   <groupId>org.jboss.spring.examples.primrose</groupId>
+   <artifactId>primrose-ear</artifactId>
+   <packaging>ear</packaging>
+   <name>Snowdrop Spring examples: Primrose EAR</name>
+
+   <dependencies>
+
+      <dependency>
+         <groupId>org.jboss.spring.examples.primrose</groupId>
+         <artifactId>primrose-ejb</artifactId>
+         <type>ejb</type>
+         <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.spring.examples.primrose</groupId>
+         <artifactId>primrose-war</artifactId>
+         <type>war</type>
+         <version>${project.version}</version>
+      </dependency>
+
+      <!-- Snowdrop -->
+      <dependency>
+         <groupId>org.jboss.snowdrop</groupId>
+         <artifactId>snowdrop-namespace</artifactId>
+      </dependency>
+
+      <!-- Spring -->
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-beans</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <finalName>primrose</finalName>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-ear-plugin</artifactId>
+            <configuration>
+               <defaultLibBundleDir>lib</defaultLibBundleDir>
+               <generateApplicationXml>true</generateApplicationXml>
+               <modules>
+                  <webModule>
+                     <groupId>org.jboss.spring.examples.primrose</groupId>
+                     <artifactId>primrose-war</artifactId>
+                     <bundleFileName>primrose.war</bundleFileName>
+                     <contextRoot>/primrose</contextRoot>
+                  </webModule>
+                  <ejbModule>
+                     <groupId>org.jboss.spring.examples.primrose</groupId>
+                     <artifactId>primrose-ejb</artifactId>
+                     <bundleFileName>primrose.jar</bundleFileName>
+                  </ejbModule>
+               </modules>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+</project>
+

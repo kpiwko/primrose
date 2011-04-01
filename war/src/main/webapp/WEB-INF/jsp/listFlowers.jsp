@@ -23,23 +23,20 @@
 </form:form>
 --%>
 
-<c:if test="${(flowers ne null) and (empty flowers)}">
+<c:if test="${(flowerList ne null) and (empty flowerList)}">
         Sorry no result matches...
 </c:if>
-<c:if test="${not empty flowers}">
+<c:if test="${not empty flowerList}">
 	<table border="0">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th>ID</th>
-				<th>Subscriber name</th>
-				<th>Membership</th>
+				<th>Flower name</th>
 				<th></th>
 			</tr>
 		</thead>
-		<c:forEach items="${flowers}" var="flower" varStatus="s">
+		<c:forEach items="${flowerList}" var="flower">
 			<tr>
-				<td><c:out value="${s.index}" /></td>
 				<td><c:out value="${flower.id}" /></td>
 				<td><c:out value="${flower.genus} ${flower.species}" /></td>
 				<td><a href='accountDetail.do?id=<c:out value="${flower.id}"/>'>Detail</a></td>

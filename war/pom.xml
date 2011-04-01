@@ -17,7 +17,18 @@
    <dependencies>
 
       <!-- Primrose -->
-
+      <dependency>
+         <groupId>org.jboss.spring.examples.primrose</groupId>
+         <artifactId>primrose-domain</artifactId>
+         <version>${project.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spring.examples.primrose</groupId>
+         <artifactId>primrose-dao</artifactId>
+         <version>${project.version}</version>
+         <scope>provided</scope>
+      </dependency>
       <dependency>
          <groupId>org.jboss.spring.examples.primrose</groupId>
          <artifactId>primrose-ejb</artifactId>
@@ -109,10 +120,9 @@
       
       <!-- JSP & JSTL -->
       <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>jstl</artifactId>
+         <groupId>taglibs</groupId>
+         <artifactId>standard</artifactId>
          <version>1.1.2</version>
-         <scope>provided</scope>
       </dependency>
 
 

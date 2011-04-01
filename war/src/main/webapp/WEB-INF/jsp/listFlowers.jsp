@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <html>
 <head>
@@ -9,7 +9,7 @@
 
 <body>
 
-<!-- 
+<%--
 <form:form commandName="userInput">
 
         Search accounts <form:select path="invoiceStatus"
@@ -21,7 +21,7 @@
 	to <form:input path="maxAccountNum" maxlength="2" size="2"
 		cssStyle="font-size:90%" /> relevant accounts. </span>
 </form:form>
--->
+--%>
 
 <c:if test="${(flowers ne null) and (empty flowers)}">
         Sorry no result matches...

@@ -18,6 +18,17 @@
 
       <dependency>
          <groupId>org.jboss.spring.examples.primrose</groupId>
+         <artifactId>primrose-domain</artifactId>
+         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spring.examples.primrose</groupId>
+         <artifactId>primrose-dao</artifactId>
+         <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.spring.examples.primrose</groupId>
          <artifactId>primrose-ejb</artifactId>
          <type>ejb</type>
          <version>${project.version}</version>
@@ -49,10 +60,6 @@
          <groupId>org.springframework</groupId>
          <artifactId>spring-beans</artifactId>
       </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-tx</artifactId>
-      </dependency>
    </dependencies>
 
    <build>
@@ -62,6 +69,7 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-ear-plugin</artifactId>
             <configuration>
+               <fileNameMapping>no-version</fileNameMapping>
                <defaultLibBundleDir>lib</defaultLibBundleDir>
                <generateApplicationXml>true</generateApplicationXml>
                <modules>

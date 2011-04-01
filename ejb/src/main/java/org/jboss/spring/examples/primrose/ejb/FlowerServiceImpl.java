@@ -4,19 +4,32 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 
 import org.jboss.annotation.spring.Spring;
 import org.jboss.ejb3.annotation.LocalBinding;
+import org.jboss.spring.callback.SpringLifecycleInterceptor;
 import org.jboss.spring.examples.primrose.dao.FlowerDao;
-import org.jboss.spring.examples.primrose.dta.Flower;
-import org.jboss.spring.examples.primrose.dta.Watering;
+import org.jboss.spring.examples.primrose.entity.Flower;
+import org.jboss.spring.examples.primrose.entity.Watering;
 
 @Stateless
 @LocalBinding(jndiBinding = "primrose/FlowerService")
+@Interceptors(SpringLifecycleInterceptor.class)
 public class FlowerServiceImpl implements FlowerService
 {
    @Spring(bean = "flowerDao", jndiName = "SpringDao")
    private FlowerDao flowerDao;
+
+   public FlowerDao getFlowerDao()
+   {
+      return flowerDao;
+   }
+
+   public void setFlowerDao(FlowerDao flowerDao)
+   {
+      this.flowerDao = flowerDao;
+   }
 
    public List<Flower> getAllFlowers()
    {

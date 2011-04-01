@@ -1,6 +1,6 @@
 package org.jboss.spring.examples.primrose.messaging;
 
-import org.jboss.spring.examples.primrose.dta.WateringNotification;
+import org.jboss.spring.examples.primrose.entity.WateringNotification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jmx.export.annotation.ManagedOperation;

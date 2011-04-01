@@ -1,4 +1,4 @@
-package org.jboss.spring.examples.primrose.dta;
+package org.jboss.spring.examples.primrose.entity;
 
 import java.io.Serializable;
 import java.util.Date;

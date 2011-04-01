@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import org.jboss.spring.examples.primrose.dta.Flower;
-import org.jboss.spring.examples.primrose.dta.Watering;
+import org.jboss.spring.examples.primrose.entity.Flower;
+import org.jboss.spring.examples.primrose.entity.Watering;
 
 @Local
 public interface FlowerService

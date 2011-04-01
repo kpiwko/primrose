@@ -44,6 +44,10 @@
       <servlet-name>WateringService</servlet-name>
       <url-pattern>/ws/water</url-pattern>
    </servlet-mapping>
+   
+   <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+   </welcome-file-list>
 
 </web-app>
 

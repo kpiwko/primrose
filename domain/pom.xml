@@ -10,25 +10,11 @@
    </parent>
 
    <groupId>org.jboss.spring.examples.primrose</groupId>
-   <artifactId>primrose-ejb</artifactId>
-   <packaging>ejb</packaging>
-   <name>Snowdrop Spring examples: Primrose EJB</name>
+   <artifactId>primrose-domain</artifactId>
+   <packaging>jar</packaging>
+   <name>Snowdrop Spring examples: Primrose Domain</name>
 
    <dependencies>
-      <dependency>
-         <groupId>org.jboss.spring.examples.primrose</groupId>
-         <artifactId>primrose-domain</artifactId>
-         <scope>provided</scope>
-         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.jboss.spring.examples.primrose</groupId>
-         <artifactId>primrose-dao</artifactId>
-         <scope>provided</scope>
-         <version>${project.version}</version>
-      </dependency>
-
-
       <dependency>
          <groupId>org.jboss.javaee</groupId>
          <artifactId>jboss-ejb-api</artifactId>
@@ -61,9 +47,11 @@
          <artifactId>spring-beans</artifactId>
          <scope>provided</scope>
       </dependency>
-
-
    </dependencies>
+   
+   <build>
+      <finalName>primrose-domain</finalName>
+   </build>
 
 </project>
 

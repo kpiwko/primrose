@@ -10,9 +10,9 @@
    </parent>
 
    <groupId>org.jboss.spring.examples.primrose</groupId>
-   <artifactId>primrose-ejb</artifactId>
-   <packaging>ejb</packaging>
-   <name>Snowdrop Spring examples: Primrose EJB</name>
+   <artifactId>primrose-dao</artifactId>
+   <packaging>jar</packaging>
+   <name>Snowdrop Spring examples: Primrose DAO</name>
 
    <dependencies>
       <dependency>
@@ -21,13 +21,6 @@
          <scope>provided</scope>
          <version>${project.version}</version>
       </dependency>
-      <dependency>
-         <groupId>org.jboss.spring.examples.primrose</groupId>
-         <artifactId>primrose-dao</artifactId>
-         <scope>provided</scope>
-         <version>${project.version}</version>
-      </dependency>
-
 
       <dependency>
          <groupId>org.jboss.javaee</groupId>

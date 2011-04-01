@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <description>BeanFactory=(SpringDao)</description>
-<!--
-    <import resource="classpath*:dao-context.xml"/> -->
+
+    <import resource="classpath*:flowers-service.xml"/>
     <import resource="classpath*:infrastructure.xml"/>
 
 </beans>

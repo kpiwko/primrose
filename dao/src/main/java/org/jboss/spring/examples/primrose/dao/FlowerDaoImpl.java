@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.jboss.spring.examples.primrose.dta.Flower;
+import org.jboss.spring.examples.primrose.entity.Flower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

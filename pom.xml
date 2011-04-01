@@ -9,6 +9,8 @@
    <name>Snowdrop Spring examples: Primrose aggregator</name>
 
    <modules>
+      <module>domain</module>
+      <module>dao</module>
       <module>ejb</module>
       <module>war</module>
       <module>ear</module>

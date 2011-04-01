@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.jboss.spring.examples.primrose.dao.FlowerDao;
-import org.jboss.spring.examples.primrose.dta.Flower;
+import org.jboss.spring.examples.primrose.entity.Flower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

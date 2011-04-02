@@ -8,6 +8,7 @@ import org.jboss.spring.examples.primrose.dao.FlowerDao;
 import org.jboss.spring.examples.primrose.entity.Flower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class WateringCanImpl implements WateringCan
@@ -15,6 +16,7 @@ public class WateringCanImpl implements WateringCan
    @Autowired
    FlowerDao flowerDao;
 
+   @Transactional
    public void waterAt(String location, Double amount)
    {
       List<Flower> flowers = flowerDao.getForLocation(location);

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress DuplicatedBeanNamesInspection -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" 
-   xmlns:jboss="http://www.jboss.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" 
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:tx="http://www.springframework.org/schema/tx" 
+   xmlns:jboss="http://www.jboss.org/schema/spring"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.jboss.org/schema/spring http://www.jboss.org/schema/spring.xsd">
 
    <context:component-scan base-package="org.jboss.spring.examples.primrose.watering" />
@@ -13,6 +17,8 @@
 
    <!-- export MBean Server for usage with JMX -->
    <jboss:mbean-server />
+   
+   <tx:annotation-driven/>
 
    <bean id="attributeSource" class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource" />
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+   <parent>
+      <groupId>org.jboss.spring.examples.primrose</groupId>
+      <artifactId>primrose-bom</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <relativePath>../bom/pom.xml</relativePath>
+   </parent>
+
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.jboss.spring.examples.primrose</groupId>
+   <artifactId>primrose-test-ws</artifactId>
+   <packaging>jar</packaging>
+   <name>JBoss Snowdrop examples - Primrose WS test</name>
+
+
+   <dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>4.8</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+
+   <profiles>
+      <profile>
+         <id>generate-ws-native</id>
+
+         <properties>
+            <jbossws.native.client.version>3.1.2.SP6</jbossws.native.client.version>
+         </properties>
+
+         <dependencies>
+            <dependency>
+               <groupId>org.jboss.ws.native</groupId>
+               <artifactId>jbossws-native-client</artifactId>
+               <version>${jbossws.native.client.version}</version>
+            </dependency>
+         </dependencies>
+
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.jboss.ws.plugins</groupId>
+                  <artifactId>maven-jaxws-tools-plugin</artifactId>
+                  <version>1.0.0.GA</version>
+                  <configuration>
+                     <wsdls>
+                        <wsdl>${basedir}/src/main/resources/WateringServiceService.wsdl</wsdl>
+                     </wsdls>
+                     <targetPackage>org.jboss.spring.examples.primrose.wstest</targetPackage>
+                     <extension>true</extension>
+                  </configuration>
+                  <executions>
+                     <execution>
+                        <goals>
+                           <goal>wsconsume</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+         <repositories>
+            <!-- BREW repository is required to create web service from descriptor -->
+            <repository>
+               <id>maven_eap5</id>
+               <name>EAP5 Central Repository</name>
+               <url>http://repository.jboss.org/maven2-brew/</url>
+               <layout>default</layout>
+               <releases>
+                  <enabled>true</enabled>
+                  <updatePolicy>never</updatePolicy>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+                  <updatePolicy>never</updatePolicy>
+               </snapshots>
+            </repository>
+         </repositories>
+      </profile>
+   </profiles>
+
+
+</project>

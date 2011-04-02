@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WateringServiceService" targetNamespace="http://ws.primrose.examples.spring.jboss.org/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.primrose.examples.spring.jboss.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xs:schema targetNamespace="http://ws.primrose.examples.spring.jboss.org/" version="1.0" xmlns:tns="http://ws.primrose.examples.spring.jboss.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="notifyWatering" type="tns:notifyWatering"/>
+   <xs:element name="notifyWateringResponse" type="tns:notifyWateringResponse"/>
+   <xs:complexType name="notifyWatering">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+     <xs:element minOccurs="0" name="arg1" type="xs:double"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="notifyWateringResponse">
+    <xs:sequence/>
+   </xs:complexType>
+  </xs:schema>
+  </types>
+  <message name="WateringService_notifyWatering">
+    <part name="notifyWatering" element="tns:notifyWatering">
+    </part>
+  </message>
+  <message name="WateringService_notifyWateringResponse">
+    <part name="notifyWateringResponse" element="tns:notifyWateringResponse">
+    </part>
+  </message>
+  <portType name="WateringService">
+    <operation name="notifyWatering" parameterOrder="notifyWatering">
+      <input message="tns:WateringService_notifyWatering">
+    </input>
+      <output message="tns:WateringService_notifyWateringResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="WateringServiceBinding" type="tns:WateringService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="notifyWatering">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WateringServiceService">
+    <port name="WateringServicePort" binding="tns:WateringServiceBinding">
+      <soap:address location="http://127.0.0.1:8080/primrose/ws/water"/>
+    </port>
+  </service>
+</definitions>

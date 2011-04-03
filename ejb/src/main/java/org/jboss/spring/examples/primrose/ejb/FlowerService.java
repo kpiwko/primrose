@@ -19,4 +19,5 @@ public interface FlowerService
    Flower plantFlower(String genus, String species, String location, Watering watering);
 
    void throwAway(long id);
+   
 }

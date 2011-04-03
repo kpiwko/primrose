@@ -28,21 +28,32 @@ public class WateringCanImpl implements WateringCan
          if (last == null)
          {
             flowerDao.water(f, amount);
-            System.out.println("Flower " + f.getGenus() + " " + f.getLocation() + " was watered");
+            System.out.println("Flower " + f.getGenus() + " on " + f.getLocation() + " was watered");
          }
          else
          {
             Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE, f.getWatering().getTimeDelay());
-            if (cal.getTime().after(today))
+            cal.setTime(last);
+            // emulating a day with 3 seconds
+            cal.add(Calendar.SECOND, f.getWatering().getTimeDelay() * 3);
+            if (cal.getTime().before(today))
             {
                flowerDao.water(f, amount);
-               f.setLastWatered(today);
-               System.out.println("Flower " + f.getGenus() + " " + f.getLocation() + " was watered");
+               System.out.println("Flower " + f.getGenus() + " on " + f.getLocation() + " was watered");
             }
          }
 
       }
 
+   }
+   
+   @Transactional
+   public void water(long id, Double amount)
+   {
+      Flower flower = flowerDao.find(id);
+      if(flower!=null) {
+         flowerDao.water(flower, amount);
+         System.out.println("Flower " + flower.getGenus() + " on " + flower.getLocation() + " was watered");
+      }
    }
 }

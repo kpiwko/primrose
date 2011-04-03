@@ -39,7 +39,7 @@
 			<tr>
 				<td><c:out value="${flower.id}" /></td>
 				<td><c:out value="${flower.genus} ${flower.species}" /></td>
-				<td><a href='accountDetail.do?id=<c:out value="${flower.id}"/>'>Detail</a></td>
+				<td><a href='flowerDetail.do?id=<c:out value="${flower.id}"/>'>Detail</a></td>
 			</tr>
 		</c:forEach>
 	</table>

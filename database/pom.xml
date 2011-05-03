@@ -12,7 +12,7 @@
    <groupId>org.jboss.spring.examples.primrose</groupId>
    <artifactId>primrose-database</artifactId>
    <packaging>pom</packaging>
-   <name>JBoss Snowdrop examples - Primrose database utility</name>
+   <name>Snowdrop Spring examples: Primrose database utility</name>
 
    <properties>
       <jboss.home>/home/kpiwko/apps/jboss-5.1.0.GA</jboss.home>

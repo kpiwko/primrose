@@ -12,7 +12,7 @@
    <groupId>org.jboss.spring.examples.primrose</groupId>
    <artifactId>primrose-test-ws</artifactId>
    <packaging>jar</packaging>
-   <name>JBoss Snowdrop examples - Primrose WS test</name>
+   <name>Snowdrop Spring examples: Primrose WS test</name>
 
 
    <dependencies>

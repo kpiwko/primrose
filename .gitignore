@@ -1,5 +1,7 @@
+*.iml
 .classpath
 .settings
 .project
+.idea
 database/data
 target

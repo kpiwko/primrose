@@ -20,7 +20,6 @@
       <max-pool-size>20</max-pool-size>
 
       <idle-timeout-minutes>0</idle-timeout-minutes>
->
       <track-statements/>
 
       <application-managed-security/>
